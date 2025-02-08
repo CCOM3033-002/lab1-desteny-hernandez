@@ -1,3 +1,8 @@
+/*
+Lab 1 - Box office
+Nombre: Desteny Hernandez De Juan
+Núm. Est: 401-23-3159
+*/
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -5,31 +10,45 @@ using namespace std;
 
 int main()
 {
- string nombre;
- double ticketAdult = 10.0, ticketChild = 6.0;
- double adultAmount, childAmount;
+     // Declaramos nuestras variables e inicializamos los precios de los tickets.
+     string nombre;
+     double adultPrice = 10.0, childPrice = 6.0, adultAmount, childAmount;
+     char space;
 
- cout << "entre el nombre de la pelicula: ";
- cin >> nombre;
+     cout << "This program calculates the Gross and Net Box Office Profit and the Distributer's Profit of a movie playing in the theater.";
 
- cout << "entre tickets para adultos vendidos: ";
- cin >> adultAmount;
+     //  Crea una linea de espacio.
+     cin.ignore();
+     cin.get(space);
 
- cout << "entre tickets para children vendidos: ";
- cin >> childAmount;
- double gross = (ticketAdult * adultAmount) + (ticketChild * childAmount);
+     cout << "Enter the name of the movie: ";
+     getline(cin, nombre);
 
- double net = gross * 0.2;
+     cout << "Enter the amount of adult tickets sold: ";
+     cin >> adultAmount;
 
- double distributor = gross - net;
+     cout << "Enter the amount of child tickets sold: ";
+     cin >> childAmount;
 
- cout << setw(40) << left << "Movie Name:"
-      << "\"" << nombre << "\"" << endl;
- cout << setw(43) << left << "Adult Tickets Sold:" << adultAmount << endl;
- cout << setw(43) << left << "Child Tickets Sold:" << childAmount << endl;
- cout << setw(40) << left << "Gross Box Office Profit:" << setprecision(2) << fixed << showpoint << setw(2) << left << '$' << gross << endl;
- cout << setw(40) << left << "Net Box Office Profit:" << setw(2) << left << '$' << net << endl;
- cout << setw(40) << left << "Amount Paid to Distributor:" << setw(2) << left << '$' << distributor << endl;
+     //  Crea una linea de espacio.
+     cin.ignore();
+     cin.get(space);
 
- return 0;
+     // Gross sales de tickets para adultos y niños
+     double gross = (adultPrice * adultAmount) + (childPrice * childAmount);
+
+     // Net sales de tickets
+     double net = gross * 0.2;
+
+     // Cantidad pagada al distribuidor
+     double distributor = gross - net;
+
+     cout << setw(28) << left << "Movie Name:" << '\"' << nombre << '\"' << endl;
+     cout << setw(30) << left << "Adult Tickets Sold:" << adultAmount << endl;
+     cout << setw(30) << left << "Child Tickets Sold:" << childAmount << endl;
+     cout << setw(28) << left << "Gross Box Office Profit:" << '$' << setprecision(2) << fixed << showpoint << setw(8) << right << gross << endl;
+     cout << setw(28) << left << "Net Box Office Profit:" << '$' << setw(8) << right << net << endl;
+     cout << setw(28) << left << "Amount Paid to Distributor:" << '$' << setw(8) << right << distributor << endl;
+
+     return 0;
 }
